@@ -17,7 +17,7 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
             var result = carManager.GetCarDetail();
-            foreach (var carDetail in result)
+            foreach (var carDetail in result.Data)
             {
                 Console.WriteLine(
                  "CarName : {0} -- BrandName : {1} -- ColorName : {2} -- DailyPrice : {3}",
@@ -29,7 +29,7 @@ namespace ConsoleUI
         private static void CarTest()
         {
             CarManager carManager = new CarManager(new InMemoryCarDal());
-            foreach (var item in carManager.GetAll())
+            foreach (var item in carManager.GetAll().Data)
             {
                 Console.WriteLine(item.Description);
             }
