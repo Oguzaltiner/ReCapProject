@@ -47,5 +47,7 @@ namespace Business.Constants
 
 
         public static string MaintenanceTime = "sistem bakımda";
+
+        public static string CarImageLimitExceeded = "limit 5";
     }
 }
