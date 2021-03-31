@@ -16,7 +16,6 @@
     <Folder Include="Utilities\IoC\" />
     <Folder Include="Utilities\Security\JWT\" />
     <Folder Include="Utilities\Security\Encryption\" />
-    <Folder Include="Utilities\Security\Hashing\" />
   </ItemGroup>
 
 </Project>
