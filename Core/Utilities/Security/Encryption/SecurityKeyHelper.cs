@@ -8,7 +8,7 @@ namespace Core.Utilities.Security.Encryption
     public class SecurityKeyHelper
     {
         //stringleri byte array haline getiriyor
-        public static SecurityKey CreateSecuritKey(string securityKey)
+        public static SecurityKey CreateSecurityKey(string securityKey)
         {
             return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
         }

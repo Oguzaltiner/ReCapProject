@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -49,5 +50,7 @@ namespace Business.Constants
         public static string MaintenanceTime = "sistem bakımda";
 
         public static string CarImageLimitExceeded = "limit 5";
+
+        public static string AuthorizationDenied = "yetkiniz yok";
     }
 }
