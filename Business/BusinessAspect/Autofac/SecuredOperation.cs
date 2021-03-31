@@ -37,4 +37,4 @@ namespace Business.BusinessAspect.Autofac
         }
     }
 }
-}
+

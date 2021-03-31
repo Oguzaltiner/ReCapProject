@@ -50,7 +50,12 @@ namespace Business.Constants
         public static string MaintenanceTime = "sistem bakımda";
 
         public static string CarImageLimitExceeded = "limit 5";
-
-        public static string AuthorizationDenied = "yetkiniz yok";
+        public static string AuthorizationDenied = "Yetkin yok";
+        public static string UserNotFound = "Kullanıcı yok";
+        public static string PasswordError = "Şifre Hatalı";
+        public static string SuccessfulLogin = "Giriş Başarılı";
+        public static string UserAlreadyExists = "Kullanıcı zaten var";
+        public static string AccessTokenCreated = "Token oluşturuldu";
+        public static string UserRegistered = "Kullanıcı kayıtlı";
     }
 }

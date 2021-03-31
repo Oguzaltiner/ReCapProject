@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
-using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,35 +17,35 @@ namespace WebAPI.Controllers
         {
             _userService = userService;
         }
-        [HttpGet("getall")]
-        public IActionResult GetAll()
-        {
-            var result = _userService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-        [HttpPost("add")]
-        public IActionResult Add(User user)
-        {
-            var result = _userService.Add(user);
-            return Ok(result.Message);
-        }
+        //[HttpGet("getall")]
+        //public IActionResult GetAll()
+        //{
+        //    var result = _userService.GetAll();
+        //    if (result.Success)
+        //    {
+        //        return Ok(result.Data);
+        //    }
+        //    return BadRequest(result.Message);
+        //}
+        //[HttpPost("add")]
+        //public IActionResult Add(User user)
+        //{
+        //    var result = _userService.Add(user);
+        //    return Ok(result.Message);
+        //}
 
-        [HttpPost("delete")]
-        public IActionResult Delete(User user)
-        {
-            var result = _userService.Delete(user);
-            return Ok(result.Message);
-        }
-        [HttpPost("update")]
-        public IActionResult Update(User user)
-        {
-            var result = _userService.Update(user);
-            return Ok(result.Message);
-        }
+        //[HttpPost("delete")]
+        //public IActionResult Delete(User user)
+        //{
+        //    var result = _userService.Delete(user);
+        //    return Ok(result.Message);
+        //}
+        //[HttpPost("update")]
+        //public IActionResult Update(User user)
+        //{
+        //    var result = _userService.Update(user);
+        //    return Ok(result.Message);
+        //}
 
     }
 }
