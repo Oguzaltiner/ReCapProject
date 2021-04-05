@@ -1,7 +1,10 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Caching;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -17,10 +20,13 @@ namespace Business.Concrete
     public class CarImageManager : ICarImageService
     {
         ICarImageDal carImageDal;
-        public CarImageManager(ICarImageDal carImageDal)
+        ICacheManager cacheManager;
+        public CarImageManager(ICarImageDal carImageDal, ICacheManager cacheManager)
         {
+            this.cacheManager = cacheManager;
             this.carImageDal = carImageDal;
         }
+        [CacheRemoveAspect("ICarImageManager.Get")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(CarImage carImage)
         {
@@ -49,11 +55,14 @@ namespace Business.Concrete
             carImageDal.Delete(carImage);
             return new SuccessResult();
         }
+        [PerformanceAspect(1)]
+        [CacheAspect]
         [ValidationAspect(typeof(CarImageValidator))]
         public IDataResult<CarImage> Get(int id)
         {
             return new SuccessDataResult<CarImage>(carImageDal.Get(p => p.Id == id));
         }
+        [CacheAspect]
         [ValidationAspect(typeof(CarImageValidator))]
         public IDataResult<List<CarImage>> GetAll()
         {
@@ -71,7 +80,7 @@ namespace Business.Concrete
 
             return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id).Data);
         }
-       
+
         private IDataResult<List<CarImage>> CheckIfCarImageNull(int id)
         {
             try
@@ -107,6 +116,11 @@ namespace Business.Concrete
             }
             carImageDal.Update(carImage);
             return new SuccessResult();
+        }
+
+        public IResult AddTransactionTest(CarImage carImage)
+        {
+            throw new NotImplementedException();
         }
     }
 }

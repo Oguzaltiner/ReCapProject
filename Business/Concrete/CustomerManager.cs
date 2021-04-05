@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.CrossCuttingConcerns.Caching;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -13,11 +14,14 @@ namespace Business.Concrete
     public class CustomerManager : ICustomerService
     {
         ICustomerDal _customerDal;
+        ICacheManager _cacheManager;
 
-        public CustomerManager(ICustomerDal customerDal)
+        public CustomerManager(ICustomerDal customerDal, ICacheManager cacheManager)
         {
             _customerDal = customerDal;
+            _cacheManager = cacheManager;
         }
+
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
