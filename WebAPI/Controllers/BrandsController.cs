@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
             var result = _brandService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
@@ -50,7 +50,6 @@ namespace WebAPI.Controllers
             var result = _brandService.Update(brand);
             return Ok(result.Message);
         }
-
 
     }
 }

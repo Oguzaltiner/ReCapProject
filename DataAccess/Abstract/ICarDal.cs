@@ -1,18 +1,16 @@
 ﻿using Core.DataAccess;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarDal : IEntityRepository<Car>
+    public interface ICarDal:IEntityRepository<Car>
     {
-        List<CarDetailDto> GetCarDetail();
-
+        List<CarDetailDto> GetCarDetails(Expression<Func<Car, bool>> filter = null);
+        List<CarDetailDto> GetCarsDetails(Expression<Func<CarDetailDto, bool>> filter = null);
     }
-
-
 }
